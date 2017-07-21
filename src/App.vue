@@ -1,14 +1,12 @@
 <template>
   <v-ons-page id="app">
     <v-ons-splitter>
-      <v-ons-splitter-side swipeable collapse width="250px"
-        :animation="$ons.platform.isAndroid() ? 'overlay' : 'reveal'"
-        :open.sync="menuIsOpen">
-        <menu-page></menu-page>
+      <v-ons-splitter-side swipeable collapse :width="menu.width" :animation="menu.animation" :open.sync="menu.open">
+        <menu-page />
       </v-ons-splitter-side>
 
       <v-ons-splitter-content>
-        <home-page @toggleMenu="menuIsOpen = !menuIsOpen"></home-page>
+        <home-page @toggleMenu="toggleMenu" />
       </v-ons-splitter-content>
     </v-ons-splitter>
   </v-ons-page>
@@ -20,21 +18,29 @@ import MenuPage from './components/MenuPage'
 
 export default {
   name: 'app',
-  data () {
-    return {
-      menuIsOpen: false
-    }
-  },
   components: {
     HomePage,
     MenuPage
+  },
+  data () {
+    return {
+      menu: {
+        width: '300px',
+        animation: this.$ons.platform.isAndroid() ? 'overlay' : 'reveal',
+        open: false
+      }
+    }
+  },
+  methods: {
+    toggleMenu () {
+      this.menu.open = !this.menu.open
+    }
   }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 ons-splitter-side[side=left][animation=overlay] {
-  border-right: 1px solid #BBB;
+  border-right: 1px solid #bbb;
 }
 </style>

@@ -1,14 +1,16 @@
 <template>
   <v-ons-page>
-    <v-ons-toolbar modifier="transparent"></v-ons-toolbar>
+    <v-ons-toolbar modifier="transparent" />
     <div class="header">
       <img src="../assets/onsenui-logo.png">
     </div>
 
     <v-ons-list-title>Onsen UI Essential Links</v-ons-list-title>
     <v-ons-list>
-      <v-ons-list-item modifier="chevron" v-for="item in essentialLinks" @click="goTo(item.link)" :key="item.link">
-        <div class="left"><v-ons-icon fixed-width :icon="item.icon"></v-ons-icon></div>
+      <v-ons-list-item modifier="chevron" v-for="item in essentialLinks" :key="item.link" @click="goTo(item.link)">
+        <div class="left">
+          <v-ons-icon fixed-width :icon="item.icon" />
+        </div>
         <div class="center">{{ item.label }}</div>
       </v-ons-list-item>
     </v-ons-list>
@@ -17,7 +19,7 @@
 
 <script>
 export default {
-  name: 'menu',
+  name: 'menu-page',
   data () {
     return {
       essentialLinks: [
@@ -57,7 +59,6 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .header {
   text-align: center;

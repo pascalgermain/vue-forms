@@ -3,7 +3,7 @@
     <v-ons-toolbar class="home-toolbar">
       <div class="left">
         <v-ons-toolbar-button @click="$emit('toggleMenu')">
-          <v-ons-icon icon="ion-navicon, material:md-menu"></v-ons-icon>
+          <v-ons-icon icon="ion-navicon, material:md-menu" />
         </v-ons-toolbar-button>
       </div>
       <div class="center">{{ msg }}</div>
@@ -15,10 +15,14 @@
 
     <v-ons-list-title>Vue.js Essential Links</v-ons-list-title>
     <v-ons-list>
-      <v-ons-list-item v-for="item in essentialLinks" @click="goTo(item.link)" :key="item.link">
-        <div class="left"><v-ons-icon fixed-width :icon="item.icon"></v-ons-icon></div>
+      <v-ons-list-item v-for="item in essentialLinks" :key="item.link" @click="goTo(item.link)">
+        <div class="left">
+          <v-ons-icon fixed-width :icon="item.icon" />
+        </div>
         <div class="center">{{ item.label }}</div>
-        <div class="right"><v-ons-icon icon="fa-external-link"></v-ons-icon></div>
+        <div class="right">
+          <v-ons-icon icon="fa-external-link" />
+        </div>
       </v-ons-list-item>
     </v-ons-list>
 
@@ -39,13 +43,12 @@
         <v-ons-card @click="goTo('https://github.com/vuejs/awesome-vue')">awesome-vue</v-ons-card>
       </v-ons-col>
     </v-ons-row>
-
   </v-ons-page>
 </template>
 
 <script>
 export default {
-  name: 'home',
+  name: 'home-page',
   data () {
     return {
       msg: 'Welcome',
@@ -86,7 +89,6 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .header {
   text-align: center;
@@ -104,7 +106,8 @@ ons-card {
   text-align: center;
 }
 
-ons-list-item, ons-card {
+ons-list-item,
+ons-card {
   cursor: pointer;
 }
 </style>
