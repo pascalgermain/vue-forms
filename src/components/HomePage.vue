@@ -1,113 +1,93 @@
 <template>
   <v-ons-page>
-    <v-ons-toolbar class="home-toolbar">
+    <v-ons-toolbar>
       <div class="left">
         <v-ons-toolbar-button @click="$emit('toggleMenu')">
           <v-ons-icon icon="ion-navicon, material:md-menu" />
         </v-ons-toolbar-button>
       </div>
-      <div class="center">{{ msg }}</div>
+      <div class="center">{{ title }}</div>
     </v-ons-toolbar>
 
-    <div class="header">
-      <img src="../assets/logo.png">
+    <div class="form">
+      <vue-form-generator :schema="schema" :model="model" :options="formOptions" />
     </div>
-
-    <v-ons-list-title>Vue.js Essential Links</v-ons-list-title>
-    <v-ons-list>
-      <v-ons-list-item v-for="item in essentialLinks" :key="item.link" @click="goTo(item.link)">
-        <div class="left">
-          <v-ons-icon fixed-width :icon="item.icon" />
-        </div>
-        <div class="center">{{ item.label }}</div>
-        <div class="right">
-          <v-ons-icon icon="fa-external-link" />
-        </div>
-      </v-ons-list-item>
-    </v-ons-list>
-
-    <v-ons-list-title>Vue.js Ecosystem</v-ons-list-title>
-    <v-ons-row>
-      <v-ons-col>
-        <v-ons-card @click="goTo('http://router.vuejs.org/')">vue-router</v-ons-card>
-      </v-ons-col>
-      <v-ons-col>
-        <v-ons-card @click="goTo('http://vuex.vuejs.org/')">vuex</v-ons-card>
-      </v-ons-col>
-    </v-ons-row>
-    <v-ons-row>
-      <v-ons-col>
-        <v-ons-card @click="goTo('http://vue-loader.vuejs.org/')">vue-loader</v-ons-card>
-      </v-ons-col>
-      <v-ons-col>
-        <v-ons-card @click="goTo('https://github.com/vuejs/awesome-vue')">awesome-vue</v-ons-card>
-      </v-ons-col>
-    </v-ons-row>
   </v-ons-page>
 </template>
 
 <script>
+import VueFormGenerator from 'vue-form-generator'
+import 'vue-form-generator/dist/vfg-core.css'
+
 export default {
   name: 'home-page',
   data () {
     return {
-      msg: 'Welcome',
-      essentialLinks: [
-        {
-          label: 'Core Docs',
-          link: 'https://vuejs.org',
-          icon: 'fa-book'
-        },
-        {
-          label: 'Gitter Chat',
-          link: 'https://gitter.im/vuejs/vue',
-          icon: 'fa-commenting'
-        },
-        {
-          label: 'Forum',
-          link: 'https://forum.vuejs.org',
-          icon: 'ion-chatboxes'
-        },
-        {
-          label: 'Twitter',
-          link: 'https://twitter.com/vuejs',
-          icon: 'fa-twitter'
-        },
-        {
-          label: 'Docs for this template',
-          link: 'http://vuejs-templates.github.io/webpack/',
-          icon: 'fa-file-text'
-        }
-      ]
-    }
-  },
-  methods: {
-    goTo (url) {
-      window.open(url, '_blank')
+      title: 'Vue Forms',
+      model: {
+        id: 1,
+        name: 'John Doe',
+        password: 'J0hnD03!x4',
+        skills: ['JavaScript', 'VueJS'],
+        email: 'john.doe@gmail.com',
+        status: true
+      },
+      schema: {
+        fields: [
+          {
+            type: 'input',
+            inputType: 'text',
+            label: 'ID (disabled text field)',
+            model: 'id',
+            readonly: true,
+            disabled: true
+          }, {
+            type: 'input',
+            inputType: 'text',
+            label: 'Name',
+            model: 'name',
+            placeholder: 'Your name',
+            featured: true,
+            required: true
+          }, {
+            type: 'input',
+            inputType: 'password',
+            label: 'Password',
+            model: 'password',
+            min: 6,
+            required: true,
+            hint: 'Minimum 6 characters',
+            validator: VueFormGenerator.validators.string
+          }, {
+            type: 'select',
+            label: 'Skills',
+            model: 'skills',
+            values: ['Javascript', 'VueJS', 'CSS3', 'HTML5']
+          }, {
+            type: 'input',
+            inputType: 'email',
+            label: 'E-mail',
+            model: 'email',
+            placeholder: 'User\'s e-mail address'
+          }, {
+            type: 'checkbox',
+            label: 'Status',
+            model: 'status',
+            default: true
+          }
+        ]
+      },
+      formOptions: {
+        validateAfterLoad: true,
+        validateAfterChanged: true
+      }
     }
   }
 }
 </script>
 
 <style scoped>
-.header {
-  text-align: center;
-}
-
-img {
-  max-width: 300px;
-}
-
-ons-list-title:not(:first-of-type) {
-  margin-top: 30px;
-}
-
-ons-card {
-  text-align: center;
-}
-
-ons-list-item,
-ons-card {
-  cursor: pointer;
+.vue-form-generator {
+  margin: 30px 25px 0;
 }
 </style>
