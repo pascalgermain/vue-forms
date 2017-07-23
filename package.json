@@ -1,9 +1,9 @@
 {
   "name": "vue-forms",
   "version": "1.0.0",
-  "description": "A Vue.js project",
+  "description": "A VueFormGenerator + OnsenUI example.",
   "author": "Pascal Germain <pascalgermain@me.com>",
-  "private": true,
+  "homepage": "http://pascalgermain.github.io/vue-forms",
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",

@@ -1,6 +1,8 @@
-# vue-forms
+# Vue Forms
 
-> A Vue.js project
+> A VueFormGenerator + OnsenUI example.
+
+> http://pascalgermain.github.io/vue-forms/
 
 ## Build Setup
 
