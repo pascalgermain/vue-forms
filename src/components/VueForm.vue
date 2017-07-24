@@ -4,11 +4,17 @@
 
 <script>
 import 'vue-form-generator/dist/vfg-core.css'
+
+import Vue from 'vue'
 import VueFormGenerator from 'vue-form-generator/dist/vfg-core.js'
+
+import FieldAwesome from './FieldAwesome'
+Vue.component('FieldAwesome', FieldAwesome)
 
 export default {
   components: {
-    VueFormGenerator: VueFormGenerator.component
+    VueFormGenerator: VueFormGenerator.component,
+    FieldAwesome
   },
   props: {
     schema: {
