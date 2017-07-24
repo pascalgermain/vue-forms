@@ -20,7 +20,6 @@ import VueFormGenerator from 'vue-form-generator'
 import 'vue-form-generator/dist/vfg-core.css'
 
 export default {
-  name: 'home-page',
   data () {
     return {
       title: 'Vue Forms',

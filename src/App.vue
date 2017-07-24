@@ -17,7 +17,6 @@ import HomePage from './components/HomePage'
 import MenuPage from './components/MenuPage'
 
 export default {
-  name: 'app',
   components: {
     HomePage,
     MenuPage

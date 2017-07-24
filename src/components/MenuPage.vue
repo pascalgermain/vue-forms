@@ -19,7 +19,6 @@
 
 <script>
 export default {
-  name: 'menu-page',
   data () {
     return {
       essentialLinks: [
