@@ -2,24 +2,24 @@
   <v-ons-page id="app">
     <v-ons-splitter>
       <v-ons-splitter-side swipeable collapse :width="menu.width" :animation="menu.animation" :open.sync="menu.open">
-        <menu-page />
+        <page-menu />
       </v-ons-splitter-side>
 
       <v-ons-splitter-content>
-        <home-page @toggleMenu="toggleMenu" />
+        <page-home @toggleMenu="toggleMenu" />
       </v-ons-splitter-content>
     </v-ons-splitter>
   </v-ons-page>
 </template>
 
 <script>
-import HomePage from './components/HomePage'
-import MenuPage from './components/MenuPage'
+import PageMenu from './pages/PageMenu'
+import PageHome from './pages/PageHome'
 
 export default {
   components: {
-    HomePage,
-    MenuPage
+    PageMenu,
+    PageHome
   },
   data () {
     return {
