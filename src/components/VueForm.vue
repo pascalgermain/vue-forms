@@ -1,0 +1,38 @@
+<template>
+  <vue-form-generator v-bind="{schema, model, options}" />
+</template>
+
+<script>
+import 'vue-form-generator/dist/vfg-core.css'
+import VueFormGenerator from 'vue-form-generator/dist/vfg-core.js'
+
+export default {
+  components: {
+    VueFormGenerator: VueFormGenerator.component
+  },
+  props: {
+    schema: {
+      type: Object,
+      required: true
+    },
+    model: {
+      type: Object,
+      required: true
+    }
+  },
+  data () {
+    return {
+      options: {
+        validateAfterLoad: true,
+        validateAfterChanged: true
+      }
+    }
+  }
+}
+</script>
+
+<style scoped>
+.vue-form-generator {
+  margin: 30px 25px 0;
+}
+</style>
